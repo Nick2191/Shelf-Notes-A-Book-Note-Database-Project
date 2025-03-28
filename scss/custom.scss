@@ -1,0 +1,31 @@
+
+
+// Custom Colors
+$primary: #02FFB2; // Mint Color
+$info: #9EAFFD;    // Blue-Purple Color
+$danger: #FF7EB7;  // Pink Color
+
+// Complementary Colors
+$secondary: #6C757D; // Neutral Gray (default Bootstrap secondary)
+$warning: #FFD700;   // Golden Yellow
+$success: #00C897;   // Teal Green (pairs well with mint)
+
+// Update the theme colors map
+$theme-colors: (
+  "primary": $primary,
+  "info": $info,
+  "danger": $danger,
+  "secondary": $secondary,
+  "warning": $warning,
+  "success": $success,
+  "light": #f8f9fa, // Default Bootstrap light color
+  "dark": #343a40   // Default Bootstrap dark color
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+//Colors //
+//Mint Color #02FFB2//
+//Pink Color #FF7EB7//
+//Blue-Purple Color #9EAFFD//

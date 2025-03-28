@@ -1,0 +1,58 @@
+
+<%- include('partials/header.ejs') %>
+
+<div class="container">
+    <h2 class="mogra-regular">New Shelf-Note</h2>
+    <p>Fill out the form below to add a new Shelf-Note to your collection.</p>
+    <form action="/addNote" method="POST">
+        <div class="row">
+            <div class="col">
+                <div class="mb-2 form-floating">
+                    <input type="text" id="author" name="author" class="form-control" required>
+                    <label for="floating-input">Author:</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-2 form-floating">
+                    <input type="text" id="isbn" name="isbn" class="form-control" required>
+                    <label for="floating-input">ISBN:</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-2 form-floating">
+                    <select type="number" id="rating" name="rating" class="form-select mb-2" required>
+                        <option selected disabled hidden value="">Select 1 - 5</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label for="floatingSelect">Rating:</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-2 form-floating">
+                    <input type="date" id="date_read" name="date_read" class="form-control" required>
+                    <label for="date_read">Date Read:</label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-2 form-floating">
+            <input type="text" id="title" name="title" class="form-control" required>
+            <label for="floating-input">Title:</label>
+        </div>
+        <div class="mb-2 form-floating">
+            <textarea id="summary" name="summary" class="form-control" style="height: 100px" required></textarea>
+            <label for="floating-textarea">Summary:</label>
+        </div>
+        <div class="mb-2 form-floating">
+            <textarea id="notes" name="notes" class="form-control" style="height: 200px" required></textarea>
+            <label for="floating-textarea">Notes:</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-25 mt-2 fw-medium">Save <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 18"><path d="M11 2H9v3h2z"/><path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/></svg></button>
+    </form>
+</div>
+
+
+<%- include('partials/footer.ejs') %>
