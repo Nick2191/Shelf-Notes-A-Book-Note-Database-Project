@@ -1,25 +1,63 @@
---Shelf-Notes!--
-This app is a capstone project I completed for Angela Yu's Full-Stack 2024 WebDev course. The goal was to make an application to Create, Read, Update, and Delete book note entries from a database. This app does just that and adds a fun way to view/edit the notes added to the application. 
 
+--Shelf-Notes--
 
---Shelf-Notes App Setup----
+Shelf-Notes is a capstone project I completed as part of Angela Yu's Full-Stack 2024 Web Development course. The goal of this project was to create a full-stack application that allows users to Create, Read, Update, and Delete book note entries stored in a PostgreSQL database. This application provides a fun and interactive way to manage and edit your personal book notes.
 
-Before you can use the app you will need to create an PostgreSQL database and table with the following columns, (isbn, title, author, summary, notes, rating, date_read). Please use the queries.sql file for the exact SET DateStyle and CREATE TABLE commands used in set up. You can also see the sample Book Note INSERT INTO command if you wish to start with that. 
+--Features--
+Add, edit, and delete book notes with ease.
+Rate books using an interactive 5-star rating system.
+Sort and filter books by rating, recency, or title.
+Dark mode toggle for a better user experience.
+Responsive design using Bootstrap 5 for seamless use across devices.
 
-Next you will need to import your environment variables into a .env file you create. Environment variables include Port #, Database username, host, database name, database password, database port, and database table name. Use the included .env.example file as a guide. 
+--Setup Instructions--
+Follow these steps to set up and run the Shelf-Notes application:
 
-As always the first thing you should do when working on a new project is run "npm i" in your terminal to install the following packages, express, body-parser, pg, dotenv, and axios. 
+1. Database Setup
+Create a PostgreSQL database with the following columns:
+isbn, title, author, summary, notes, rating, date_read.
+Use the provided queries.sql file for the exact SET DateStyle and CREATE TABLE commands.
+Optionally, use the sample INSERT INTO command in the queries.sql file to populate the database with initial data.
 
-The styling of this project uses Bootstrap and some minimal custom css for animations and such. To update color palette use the custom.scss file to update colors. Use custom.css to add any custom stylings you wish. 
+2. Environment Variables
+Create a .env file in the root directory of the project.
+Add the following environment variables:
+PORT: The port number for the server.
+DB_USER: Your PostgreSQL username.
+DB_HOST: The host of your PostgreSQL database.
+DB_NAME: The name of your PostgreSQL database.
+DB_PASSWORD: Your PostgreSQL password.
+DB_PORT: The port number for your PostgreSQL database.
+DB_TABLE: The name of the table used for storing book notes.
+Use the included .env.example file as a guide.
 
-client.js is used for custom JavaScript to enable the search bar and dark mode. Additional client-side JS should be added there. 
+3. Install Dependencies
+Run the following command in your terminal to install the required packages:
+Required packages include:
+express
+body-parser
+pg
+dotenv
+axios
 
-If making changes using Bootstrap classes please run the custom script "npm run sass" which is defined in package.json. This will compile the Bootstrap scss to your style.css file. 
+4. Styling
+The project uses Bootstrap 5 for styling, along with custom CSS for animations and additional styles.
+To update the color palette, modify the custom.scss file.
+Add any additional custom styles to the custom.css file.
 
-To run the application open a terminal and run the following command, "node app.js"
+5. JavaScript
+The client.js file contains custom JavaScript for features like the search bar and dark mode toggle.
+Add any additional client-side JavaScript functionality to this file.
 
-Enjoy, welcome to feedback and suggestions. 
+6. Compile SCSS
+If you make changes to the SCSS files, run the following command to compile them into CSS:
+This will compile the SCSS into the style.css file.
 
+7. Run the Application
+Start the server by running the following command:
+Open your browser and navigate to http://localhost:<PORT> (replace <PORT> with the value in your .env file).
+Feedback and Suggestions
+Feel free to provide feedback or suggestions for improving the application. Contributions are welcome!
 
 
 
