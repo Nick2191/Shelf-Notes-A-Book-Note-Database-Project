@@ -63,8 +63,15 @@
                                         <h4 class="card-text col"><strong>Written by:</strong> <%= book.author %></h4>
                                     </div>
                                     <div class="row my-2">
-                                        <h5 class="card-text col-12 col-lg"><strong>Date Read:</strong> <%= book.date_read %></h5> 
-                                        <h5 class="card-text col-12 col-lg"><strong>Rating:</strong> <%= book.rating %></h5>
+                                        <h5 class="card-text col-12 col-lg"><strong>Date Read:</strong> <%= book.date_read %></h5>
+                                        <div class="col-12 col-lg">
+                                            <h5 class="card-text"><strong>Rating:</strong></h5>
+                                            <div class="star-rating-display">
+                                                <% for (let i = 1; i <= 5; i++) { %>
+                                                    <span class="<%= book.rating >= i ? 'text-warning' : 'text-muted' %>">&#9733;</span>
+                                                <% } %>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="accordion mb-3 shadow-md" id="accordion-<%= book.isbn %>">
                                         <div class="accordion-item">
