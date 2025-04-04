@@ -5,7 +5,7 @@ Shelf-Notes is a capstone project I completed as part of Angela Yu's Full-Stack 
 
 --Features--
 Add, edit, and delete book notes with ease.
-Rate books using an interactive 5-star rating system.
+Rate books using an interactive 5-star rating system.no
 Sort and filter books by rating, recency, or title.
 Dark mode toggle for a better user experience.
 Responsive design using Bootstrap 5 for seamless use across devices.

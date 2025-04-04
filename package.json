@@ -1,12 +1,16 @@
 {
   "dependencies": {
     "axios": "^1.8.3",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "fs": "^0.0.1-security",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.14.1"
   },
   "name": "project-book-notes",
