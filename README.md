@@ -14,10 +14,14 @@ Responsive design using Bootstrap 5 for seamless use across devices.
 Follow these steps to set up and run the Shelf-Notes application:
 
 1. Database Setup
-Create a PostgreSQL database with the following columns:
+Create a PostgreSQL database named booknotes and a table titled books with the following columns:
 isbn, title, author, summary, notes, rating, date_read.
 Use the provided queries.sql file for the exact SET DateStyle and CREATE TABLE commands.
 Optionally, use the sample INSERT INTO command in the queries.sql file to populate the database with initial data.
+
+Next create a table named users with the following columns:
+userid, email, and passwordhash
+Use the provided queries.sql file for the exact CREATE TABLE commands.
 
 2. Environment Variables
 Create a .env file in the root directory of the project.
@@ -29,16 +33,22 @@ DB_NAME: The name of your PostgreSQL database.
 DB_PASSWORD: Your PostgreSQL password.
 DB_PORT: The port number for your PostgreSQL database.
 DB_TABLE: The name of the table used for storing book notes.
+SESSION_SECRET: The value of your secret key for express-session. 
 Use the included .env.example file as a guide.
 
 3. Install Dependencies
 Run the following command in your terminal to install the required packages:
 Required packages include:
 express
+express-session
 body-parser
 pg
 dotenv
 axios
+fs
+bcrypt
+passport
+passport-local
 
 4. Styling
 The project uses Bootstrap 5 for styling, along with custom CSS for animations and additional styles.
