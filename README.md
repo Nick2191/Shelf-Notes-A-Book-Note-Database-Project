@@ -1,143 +1,205 @@
+# 📚 Shelf-Notes
 
---Shelf-Notes--
+A full-stack application for managing your personal book notes and ratings.
 
-Shelf-Notes is a capstone project I completed as part of Angela Yu's Full-Stack 2024 Web Development course. The goal of this project was to create a full-stack application that allows users to Create, Read, Update, and Delete book note entries stored in a PostgreSQL database. This application provides a fun and interactive way to manage and edit your personal book notes.
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Node.js](https://img.shields.io/badge/Node.js-v14+-green)
+![Express](https://img.shields.io/badge/Express-v4.17+-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-v13+-blue)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.0-purple)
 
---Features--
-Add, edit, and delete book notes with ease.
-Rate books using an interactive 5-star rating system.no
-Sort and filter books by rating, recency, or title.
-Dark mode toggle for a better user experience.
-Responsive design using Bootstrap 5 for seamless use across devices.
+## 📋 Table of Contents
 
---Setup Instructions--
-Follow these steps to set up and run the Shelf-Notes application:
+- [Overview](#overview)
+- [Features](#features)
+- [Demo](#demo)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+  - [Database Setup](#database-setup)
+  - [Environment Variables](#environment-variables)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Customization](#customization)
+- [API Integration](#api-integration)
+- [Contributing](#contributing)
+- [License](#license)
 
-1. Database Setup
-Create a PostgreSQL database named booknotes and a table titled books with the following columns:
-isbn, title, author, summary, notes, rating, date_read.
-Use the provided queries.sql file for the exact SET DateStyle and CREATE TABLE commands.
-Optionally, use the sample INSERT INTO command in the queries.sql file to populate the database with initial data.
+## 🔍 Overview
 
-Next create a table named users with the following columns:
-userid, email, and passwordhash
-Use the provided queries.sql file for the exact CREATE TABLE commands.
+Shelf-Notes is a capstone project completed as part of Angela Yu's Full-Stack 2024 Web Development course. The application allows users to Create, Read, Update, and Delete book note entries stored in a PostgreSQL database, providing a fun and interactive way to manage your personal book notes.
 
-2. Environment Variables
-Create a .env file in the root directory of the project.
-Add the following environment variables:
-PORT: The port number for the server.
-DB_USER: Your PostgreSQL username.
-DB_HOST: The host of your PostgreSQL database.
-DB_NAME: The name of your PostgreSQL database.
-DB_PASSWORD: Your PostgreSQL password.
-DB_PORT: The port number for your PostgreSQL database.
-DB_TABLE: The name of the table used for storing book notes.
-SESSION_SECRET: The value of your secret key for express-session. 
-Use the included .env.example file as a guide.
+The inspiration for this project came from Derek Sivers' [book notes website](https://sive.rs/book), which showcases non-fiction books with notes, ratings, and reading dates.
 
-3. Install Dependencies
-Run the following command in your terminal to install the required packages:
-Required packages include:
-express
-express-session
-body-parser
-pg
-dotenv
-axios
-fs
-bcrypt
-passport
-passport-local
+## ✨ Features
 
-4. Styling
-The project uses Bootstrap 5 for styling, along with custom CSS for animations and additional styles.
-To update the color palette, modify the custom.scss file.
-Add any additional custom styles to the custom.css file.
+- **User Authentication**: Secure login and registration system
+- **CRUD Operations**: Add, edit, and delete book notes with ease
+- **Rating System**: Rate books using an interactive 5-star rating system
+- **Sorting & Filtering**: Sort and filter books by rating, recency, or title
+- **Dark Mode**: Toggle between light and dark themes for better user experience
+- **Responsive Design**: Bootstrap 5 implementation for seamless use across devices
+- **API Integration**: Uses Open Library Covers API to fetch book covers
 
-5. JavaScript
-The client.js file contains custom JavaScript for features like the search bar and dark mode toggle.
-Add any additional client-side JavaScript functionality to this file.
+## 🖼️ Demo
 
-6. Compile SCSS
-If you make changes to the SCSS files, run the following command to compile them into CSS:
-This will compile the SCSS into the style.css file.
+![Demo Screenshot of Shelf-Notes App](/public/assets/images/Finished%20App%20Screenshot.png)
 
-7. Run the Application
-Start the server by running the following command:
-Open your browser and navigate to http://localhost:<PORT> (replace <PORT> with the value in your .env file).
-Feedback and Suggestions
-Feel free to provide feedback or suggestions for improving the application. Contributions are welcome!
+## 🛠️ Technologies Used
 
+- **Frontend**: HTML, CSS, JavaScript, Bootstrap 5, EJS
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL
+- **Authentication**: Passport.js, bcrypt
+- **API**: Axios for HTTP requests
+- **Other**: SCSS for styling, express-session for session management
 
+## 🚀 Setup Instructions
 
+### Database Setup
 
----Project Overview and Guidelines---
+1. Create a PostgreSQL database named `booknotes`
+2. Create a table titled `books` with the following columns:
+   ```sql
+   CREATE TABLE books (
+     isbn VARCHAR(20),
+     title VARCHAR(100) NOT NULL,
+     author VARCHAR(100) NOT NULL,
+     summary TEXT,
+     notes TEXT,
+     rating INTEGER,
+     date_read DATE
+   );
+   ```
+3. Create a table named `users` with the following columns:
+   ```sql
+   CREATE TABLE users (
+     userid SERIAL PRIMARY KEY,
+     email VARCHAR(100) UNIQUE NOT NULL,
+     passwordhash VARCHAR(100) NOT NULL
+   );
+   ```
+4. Use the provided `queries.sql` file for the exact SQL commands and optional sample data
 
-I read a lot of books but after I finish reading them I often don't remember all the most salient parts of the book. So I started taking notes. This capstone project is built on this idea. My friend Derek Sivers has this fantastic website where he has all the non-fiction books he has read, his notes, his ratings and when he read them. The books are sortable by rating, recency and title. It's a such cool idea for a project so I'm including it as a capstone here in this course.
-Objectives
+### Environment Variables
 
-    Revise how to integrate public APIs into web projects.
-    Gain more experience using Express/Node.js for server-side programming.
-    Demonstrate ability to Create Read Update and Delete data in a PostgreSQL Database to persist data. 
+Create a `.env` file in the root directory with the following variables:
 
-Example Ideas
+```
+PORT=3000
+DB_USER=your_postgres_username
+DB_HOST=localhost
+DB_NAME=booknotes
+DB_PASSWORD=your_postgres_password
+DB_PORT=5432
+DB_TABLE=books
+SESSION_SECRET=your_session_secret
+```
 
-    Use the Open Library Covers API to fetch book covers.
-    Create a database to store books you have read.
-    Have a way to add new data about books, update previous reviews and delete entries.
-    Display this information from your database in a website like https://sive.rs/book
-    Be able to sort your book entries by rating and recency.
+Use the included `.env.example` file as a guide.
 
-Requirements
-1. Database Persistance
+### Installation
 
-    Persist data using a PostgreSQL database.
-    Use CRUD methods to manipulate data in the database.
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/shelf-notes.git
+   cd shelf-notes
+   ```
 
-2. Project Planning
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-    Think through your project, researching the API documentation, project features, what data you will store, and how it will be used in your web application.
-    Draw a database diagram on draw.io and plan out any relationships.
-    Think through the PostgreSQL command you will need to write to create the schema for your database. 
+3. Required packages:
+   - express
+   - express-session
+   - body-parser
+   - pg
+   - dotenv
+   - axios
+   - fs
+   - bcrypt
+   - passport
+   - passport-local
 
-3. Project Setup
+### Running the Application
 
-    Set up a new Node.js project using Express.js.
-    Include pg for working with your localhost PostgreSQL database.
-    Include EJS for templating.
-    Create a frontend in HTML CSS JS.
-    Ensure that the project has a structured directory and file organization.
+1. Start the server
+   ```bash
+   npm start
+   ```
+   or for development:
+   ```bash
+   nodemon app.js
+   ```
 
-4. API Integration
+2. Open your browser and navigate to `http://localhost:3000` (or the port specified in your `.env` file)
 
-    Implement at least a GET endpoint to interact with your chosen API.
-    Use Axios to send HTTP requests to the API and handle responses.
+## 📁 Project Structure
 
-5. Data Presentation
+```
+shelf-notes/
+├── app.js                # Main application file
+├── queries.sql           # SQL queries for database setup
+├── package.json          # Project dependencies
+├── .env                  # Environment variables (create this)
+├── .env.example          # Example environment variables
+├── public/               # Static files
+│   ├── styles/           # CSS files
+│   │   ├── style.css     # Compiled CSS
+│   │   └── custom.css    # Custom CSS overrides
+│   ├── assets/           # Images and other assets
+│   └── client.js         # Client-side JavaScript
+├── scss/                 # SCSS source files
+│   └── custom.scss       # Custom SCSS for Bootstrap
+├── views/                # EJS templates
+│   ├── partials/         # Reusable template parts
+│   │   ├── header.ejs    # Header template
+│   │   └── footer.ejs    # Footer template
+│   ├── index.ejs         # Home page
+│   ├── login.ejs         # Login page
+│   ├── register.ejs      # Registration page
+│   ├── home.ejs          # User dashboard
+│   ├── addNote.ejs       # Add note form
+│   └── editNote.ejs      # Edit note form
+└── node_modules/         # Installed packages
+```
 
-    Design the application to present the book covers from the API and the data in your database a in a user-friendly way.
-    Use appropriate HTML, CSS, and a templating engine like EJS.
-    Think about how you would allow the user to sort the data from the database. 
+## 🎨 Customization
 
-6. Error Handling
+### Styling
 
-    Ensure that error handling is in place for both your application and any API requests. You can console log any errors, but you can also give users any user-relevant errors. 
+- The project uses Bootstrap 5 for styling, along with custom CSS
+- To update the color palette, modify the `custom.scss` file
+- Add additional custom styles to the `custom.css` file
 
-7. Documentation
+### Compiling SCSS
 
-    Include comments throughout your code to explain your logic.
+If you make changes to the SCSS files, compile them into CSS:
 
-8. Code Sharing
+```bash
+sass scss/custom.scss public/styles/style.css
+```
 
-    Use what you have learnt about GitHub to commit and push your project to GitHub so that you can share it with other students in the Q&A area, I'd love to see what you've build too! You can tweet at me @yu_angela
-    Include a Readme.md file that explains how to start your server, what commands are needed to run your code. e.g. npm i  and then nodemon index.js
+## 🔌 API Integration
 
-Recommended Resources
+The application uses the [Open Library Covers API](https://openlibrary.org/dev/docs/api/covers) to fetch book covers. The API is integrated using Axios for HTTP requests.
 
-    Express.js: Getting Started Guide
-    Node.js: Documentation
-    Axios: Documentation
-    Postgres: Documentation
-    pg: Documentation
-    Open Library Covers API:  https://openlibrary.org/dev/docs/api/covers
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to submit issues or pull requests.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+Built by [Nick Kottis](https://github.com/Nick2191)
